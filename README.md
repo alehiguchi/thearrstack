@@ -27,3 +27,5 @@ In this example:
 [VPN Service Password] = VPN Service Password
 
 ipvlan1: This should match the IPVLAN name created on stem 4
+
+Note: Additional containers can use the same VPN by adding the command --net=container:binhex-qbittorrentvpn
