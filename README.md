@@ -28,4 +28,6 @@ In this example:
 
 ipvlan1: This should match the IPVLAN name created on stem 4
 
+
+How to test: login to the container and run 'curl ifconfig.io' to find the public IP address being used
 Note: Additional containers can use the same VPN by adding the command --net=container:binhex-qbittorrentvpn
