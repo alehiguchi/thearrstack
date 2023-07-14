@@ -30,5 +30,7 @@ ipvlan1: This should match the IPVLAN name created on stem 4
 
 
 How to test: login to the container and run 'curl ifconfig.io' to find the public IP address being used
-
-Note: Additional containers can use the same VPN by adding the command --net=container:binhex-qbittorrentvpn
+Access to qbittorrent: http://[IP ADDRESS]:8080
+Access to sonarr: http://[IP ADDRESS]:8989
+Access to radarr: http://[IP ADDRESS]:7878
+Access to prowlarr: http://[IP ADDRESS]:9696
