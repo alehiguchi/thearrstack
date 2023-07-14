@@ -37,3 +37,61 @@ services:
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
     image: binhex/arch-qbittorrentvpn
+    
+  radarr:
+    container_name: radarr
+    environment:
+      - TZ=America/Los_Angeles
+      - HOST_OS=Unraid
+      - HOST_HOSTNAME=Dicetower
+      - HOST_CONTAINERNAME=radarr
+      - PUID=99
+      - PGID=100
+      - UMASK=022
+    volumes:
+      - /mnt/user/data/media/movies:/movies:rw
+      - /mnt/user/data/torrents:/downloads:rw
+      - /mnt/user/appdata/radarr:/config:rw
+    network_mode: "service:binhex-qbittorrentvpn"
+    image: lscr.io/linuxserver/radarr
+    depends_on:
+      - binhex-qbittorrentvpn
+
+  sonarr:
+    container_name: sonarr
+    environment:
+      - TZ=America/Los_Angeles
+      - HOST_OS=Unraid
+      - HOST_HOSTNAME=Dicetower
+      - HOST_CONTAINERNAME=sonarr
+      - PUID=99
+      - PGID=100
+      - UMASK=022
+    volumes:
+      - /mnt/user/data/media/series:/tv:rw
+      - /mnt/user/data/torrents:/downloads:rw
+      - /mnt/user/appdata/sonarr:/config:rw
+    network_mode: "service:binhex-qbittorrentvpn"
+    depends_on:
+      - binhex-qbittorrentvpn
+    image: lscr.io/linuxserver/sonarr
+  prowlarr:
+    container_name: prowlarr
+    environment:
+      - TZ=America/Los_Angeles
+      - HOST_OS=Unraid
+      - HOST_HOSTNAME=Dicetower
+      - HOST_CONTAINERNAME=prowlarr
+      - PUID=99
+      - PGID=100
+      - UMASK=022
+    volumes:
+      - /mnt/user/appdata/prowlarr:/config:rw
+    network_mode: "service:binhex-qbittorrentvpn"
+    depends_on:
+      - binhex-qbittorrentvpn
+    image: lscr.io/linuxserver/prowlarr
+
+networks:
+  ipvlan1:
+    external: true
