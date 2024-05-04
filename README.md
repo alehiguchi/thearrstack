@@ -34,7 +34,7 @@ In this example:
 
 [VPN Service Password] = VPN Service Password
 
-ipvlan1: This should match the IPVLAN name created on stem 4
+ipvlan1: This should match the IPVLAN name created on step 4
 
 
 How to test: login to the container and run 'curl ifconfig.io' to find the public IP address being used
